@@ -14,29 +14,29 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 public class WebSecurityConfig {
 
-//    @Bean
-//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//
-//    @Bean
-//    public SecurityFilterChain getSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
-//        return httpSecurity
-//                .authorizeHttpRequests((auth) -> auth.requestMatchers("/user").permitAll())
-//                .authorizeHttpRequests((auth) -> auth.requestMatchers("/admin").hasRole("ADMIN"))
-//                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll).build();
-//    }
-//
-//    @Bean
-//    public UserDetailsManager getUserDetailsManager(PasswordEncoder passwordEncoder) {
-//        var admin =
-//                User.builder()
-//                        .username("admin")
-//                        .roles("ADMIN")
-//                        .password(passwordEncoder.encode("admin"))
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(admin);
-//    }
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain getSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity
+                .authorizeHttpRequests((auth) -> auth.requestMatchers("/user").permitAll())
+                .authorizeHttpRequests((auth) -> auth.requestMatchers("/admin").hasRole("ADMIN"))
+                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll).build();
+    }
+
+    @Bean
+    public UserDetailsManager getUserDetailsManager(PasswordEncoder passwordEncoder) {
+        var admin =
+                User.builder()
+                        .username("admin")
+                        .roles("ADMIN")
+                        .password(passwordEncoder.encode("admin"))
+                        .build();
+
+        return new InMemoryUserDetailsManager(admin);
+    }
 }
 //userdetailservice
